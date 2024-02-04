@@ -12,6 +12,7 @@ using Cosmos.HAL.Drivers.Video;
 using kalavaypravlenie;
 using Cosmos.Core.Multiboot;
 using Cosmos.HAL;
+//04.02.2024
 
 #pragma warning disable CA1416 // бля меня этот ебучий варнинг заебал
 
