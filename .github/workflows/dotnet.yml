@@ -21,11 +21,8 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      continue-on-error: true
       run: dotnet restore
     - name: Build
-      continue-on-error: true
       run: dotnet build --no-restore
     - name: Test
-      continue-on-error: true
       run: dotnet test --no-build --verbosity normal
