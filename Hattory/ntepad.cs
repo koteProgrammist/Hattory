@@ -51,7 +51,7 @@ namespace Notepad
                 //directories
                 foreach (string dir in directory_list)
                 {
-                    canvas.DrawFilledRectangle(Color.DarkRed, 15, iznyy, dir.Length * 8, 15);
+                    canvas.DrawFilledRectangle(Color.Gold, 15, iznyy, dir.Length * 8, 15);
                     Text.Otrisovka.Write(dir, 15, iznyy, Color.Black);
                     if (Hattory.Kernel.Click(15, iznyy, dir.Length * 8, 16))
                     {
@@ -62,7 +62,7 @@ namespace Notepad
                 //files
                 foreach (string pathhh in files_list)
                 {
-                    canvas.DrawFilledRectangle(Color.DarkGreen, 150, iznai, pathhh.Length * 8, 15);
+                    canvas.DrawFilledRectangle(Color.Gold, 150, iznai, pathhh.Length * 8, 15);
                     Text.Otrisovka.Write(pathhh, 150, iznai, Color.Black);
                     //OPEN FILE TXT | BMP
                     if (Hattory.Kernel.Click(150, iznai, pathhh.Length * 8, 15))
@@ -134,8 +134,8 @@ namespace Notepad
             {
                 sus.KeyEvent k;
                 bool IsKeyPressed = sus.KeyboardManager.TryReadKey(out k);
-                Text.Otrisovka.Write("Redact " + pathFile + ":", 10, 270, Color.Red);
-                Text.Otrisovka.Write(txta, 10, 290, Color.White);
+                Text.Otrisovka.Write("Redact " + pathFile + ":", 10, 330, Color.Red);
+                Text.Otrisovka.Write(txta, 10, 350, Color.White);
                 if (k.Key == ConsoleKeyy.Spacebar)
                 {
                     txta += " ";

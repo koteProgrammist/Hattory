@@ -783,7 +783,7 @@ namespace Hattory
                     Text.Otrisovka.Write("No", 465, 270, Color.Black);
                     if (Click(415, 260, 35, 25))
                     {
-                        File.Delete(Notepad.ntepad.path + @"\" + Notepad.ntepad.filenameeee);
+                        File.Delete(Notepad.ntepad.path + Notepad.ntepad.filenameeee);
                         Notepad.ntepad.islock = false;
                         isformatsure = false;
                     }
@@ -871,7 +871,7 @@ namespace Hattory
             }
             catch (Exception)
             {
-                sus.Power.Shutdown();
+                sus.PCSpeaker.Beep();
             }
         }
     }
