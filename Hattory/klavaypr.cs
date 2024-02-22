@@ -75,6 +75,34 @@ namespace kalavaypravlenie
                 {
                     sus.MouseManager.MouseState = sus.MouseState.Right;
                 }
+                /*if (k.Key == ConsoleKeyy.D3)
+                {
+                    Hattory.Kernel.canvas.Mode = new Mode(800, 600, ColorDepth.ColorDepth32);
+                }
+                if (k.Key == ConsoleKeyy.D2)
+                {
+                    Hattory.Kernel.canvas.Mode = new Mode(640, 480, ColorDepth.ColorDepth32);
+                }
+                if (k.Key == ConsoleKeyy.D1)
+                {
+                    Hattory.Kernel.canvas.Mode = new Mode(320, 200, ColorDepth.ColorDepth32);
+                }
+                if (k.Key == ConsoleKeyy.D4)
+                {
+                    Hattory.Kernel.canvas.Mode = new Mode(1024, 768, ColorDepth.ColorDepth32);
+                }
+                if (k.Key == ConsoleKeyy.D5)
+                {
+                    Hattory.Kernel.canvas.Mode = new Mode(1280, 720, ColorDepth.ColorDepth32);
+                }
+                if (k.Key == ConsoleKeyy.D6)
+                {
+                    Hattory.Kernel.canvas.Mode = new Mode(1280, 1024, ColorDepth.ColorDepth32);
+                }
+                if (k.Key == ConsoleKeyy.D7)
+                {
+                    Hattory.Kernel.canvas.Mode = new Mode(1920, 1080, ColorDepth.ColorDepth32);
+                }*/
                 //if (k.Key == ConsoleKeyy.Escape)
                 //{
                 //    sus.Power.Shutdown();
