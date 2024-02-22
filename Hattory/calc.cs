@@ -58,7 +58,7 @@ namespace Calculator
                 canvas.DrawFilledRectangle(Color.Gray, 80, 320, 40, 40);
                 Text.Otrisovka.Write("0", 100, 335, Color.Black);
                 canvas.DrawFilledRectangle(Color.Gray, 130, 320, 40, 40);
-                Text.Otrisovka.Write("R", 150, 335, Color.Black);
+                Text.Otrisovka.Write(".", 150, 335, Color.Black);
                 canvas.DrawFilledRectangle(Color.Gray, 180, 320, 40, 40);
                 Text.Otrisovka.Write("x^y", 188, 335, Color.Black);
                 //end
@@ -278,16 +278,22 @@ namespace Calculator
                         
                     }
                 }
-                //R
+                //.
                 if (kern.Click(130, 320, 40, 40))
                 {
                     if (iscalcready == false)
                     {
-                        iscalcready = true;
+                        if (first.Length < 22)
+                        {
+                            first += ".";
+                        }
                     }
-                    else if (iscalcready == true)
+                    else
                     {
-                        iscalcready = false;
+                        if (second.Length < 22)
+                        {
+                            second += ".";
+                        }
                     }
                 }
                 //line 1
@@ -314,6 +320,11 @@ namespace Calculator
                 canvas.DrawFilledRectangle(Color.White, 30, 145, 190, 15);
                 Text.Otrisovka.Write(first, 35, 80, Color.Black);
                 Text.Otrisovka.Write(second, 35, 115, Color.Black);
+                try
+                {
+                    Text.Otrisovka.Write(c.ToString(), 30, 145, Color.Black);
+                }
+                catch (Exception) { }
                 Text.Otrisovka.Write("Plus", 30, 100, Color.Black); // 32
                 Text.Otrisovka.Write("Minus", 70, 100, Color.Black); // 40 + 5
                 Text.Otrisovka.Write("Devide", 120, 100, Color.Black); // 48 + 5
@@ -323,47 +334,36 @@ namespace Calculator
                     secondI = Convert.ToSingle(second);
                 }
                 catch (Exception) { }
-                if (kern.ClickInfinity(30, 100, 32, 16))
+                if (kern.Click(30, 100, 32, 16))
                 {
                     c = firstI + secondI;
-                    Text.Otrisovka.Write(c.ToString(), 30, 145, Color.Black);
                 }
-                if (kern.ClickInfinity(70, 100, 40, 16))
+                if (kern.Click(70, 100, 40, 16))
                 {
                     c = firstI - secondI;
-                    Text.Otrisovka.Write(c.ToString(), 30, 145, Color.Black);
                 }
-                if (kern.ClickInfinity(120, 100, 48, 16))
+                if (kern.Click(120, 100, 48, 16))
                 {
                     c = firstI / secondI;
-                    //Math.Round(c, 7, MidpointRounding.AwayFromZero);
-                    Text.Otrisovka.Write(c.ToString(), 30, 145, Color.Black);
                 }
-                if (kern.ClickInfinity(175, 100, 64, 16))
+                if (kern.Click(175, 100, 64, 16))
                 {
                     c = firstI * secondI;
-                   // Math.Round(c, 7, MidpointRounding.AwayFromZero);
-                    Text.Otrisovka.Write(c.ToString(), 30, 145, Color.Black);
                 }
                 //SQRT()
-                if (kern.ClickInfinity(180, 220, 40, 40))
+                if (kern.Click(180, 220, 40, 40))
                 {
                     c = (float)Math.Sqrt(firstI);
-                    Text.Otrisovka.Write(c.ToString(), 30, 145, Color.Black);
                 }
                 //SQR()
-                if (kern.ClickInfinity(180, 270, 40, 40))
+                if (kern.Click(180, 270, 40, 40))
                 {
                     c = firstI * firstI;
-                    //Math.Round(c, 7, MidpointRounding.AwayFromZero);
-                    Text.Otrisovka.Write(c.ToString(), 30, 145, Color.Black);
                 }
                 //pow()
-                if (kern.ClickInfinity(180, 320, 40, 40))
+                if (kern.Click(180, 320, 40, 40))
                 {
                     c = (float)Math.Pow(firstI, secondI);
-                    //Math.Round(c, 7, MidpointRounding.AwayFromZero);
-                    Text.Otrisovka.Write(c.ToString(), 30, 145, Color.Black);
                 }
                 Cosmos.Core.Memory.Heap.Collect();
             }
