@@ -12,7 +12,7 @@ using kalavaypravlenie;
 using static System.Net.Mime.MediaTypeNames;
 using System.Runtime.CompilerServices;
 #pragma warning disable CA1416 // Проверка совместимости платформы
-
+//something
 namespace Notepad
 {
     internal class ntepad
