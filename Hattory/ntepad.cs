@@ -8,14 +8,13 @@ using Cosmos.HAL.BlockDevice;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Cosmos.System.Graphics.Fonts;
-using kalavaypravlenie;
 using static System.Net.Mime.MediaTypeNames;
 using System.Runtime.CompilerServices;
 #pragma warning disable CA1416 // Проверка совместимости платформы
 
-namespace Notepad
+namespace Hattory
 {
-    internal class ntepad
+    internal class Notepad
     {
         public static Canvas canvas = Hattory.Kernel.canvas;
         public static string path = @"0:\";
@@ -34,13 +33,13 @@ namespace Notepad
         public static void enternote()
         {
             canvas.DrawFilledRectangle(Color.Wheat, 10, 60, 270 + path.Length*2, 250);
-            Text.Otrisovka.Write("File Manager: " + path,30,70,Color.Black);
+            Otrisovka.Write("File Manager: " + path,30,70,Color.Black);
             try
             {
                 var files_list = Directory.GetFiles(path);
                 var directory_list = Directory.GetDirectories(path);
-                //Text.Otrisovka.Write(string.Join('`',directory_list), 15, 90, Color.Black, true);
-                //Text.Otrisovka.Write(string.Join('`',files_list), 110, 90, Color.Black, true);
+                //Otrisovka.Write(string.Join('`',directory_list), 15, 90, Color.Black, true);
+                //Otrisovka.Write(string.Join('`',files_list), 110, 90, Color.Black, true);
                 if (Hattory.Kernel.Click(30, 70, 112, 10))
                 {
                     //path = @"0:\" ;
@@ -52,7 +51,7 @@ namespace Notepad
                 foreach (string dir in directory_list)
                 {
                     canvas.DrawFilledRectangle(Color.Gold, 15, iznyy, dir.Length * 8, 15);
-                    Text.Otrisovka.Write(dir, 15, iznyy, Color.Black);
+                    Otrisovka.Write(dir, 15, iznyy, Color.Black);
                     if (Hattory.Kernel.Click(15, iznyy, dir.Length * 8, 16))
                     {
                         path = path + dir + @"\";
@@ -63,7 +62,7 @@ namespace Notepad
                 foreach (string pathhh in files_list)
                 {
                     canvas.DrawFilledRectangle(Color.Gold, 150, iznai, pathhh.Length * 8, 15);
-                    Text.Otrisovka.Write(pathhh, 150, iznai, Color.Black);
+                    Otrisovka.Write(pathhh, 150, iznai, Color.Black);
                     //OPEN FILE TXT | BMP
                     if (Hattory.Kernel.Click(150, iznai, pathhh.Length * 8, 15))
                     {
@@ -134,15 +133,15 @@ namespace Notepad
             {
                 sus.KeyEvent k;
                 bool IsKeyPressed = sus.KeyboardManager.TryReadKey(out k);
-                Text.Otrisovka.Write("Redact " + pathFile + ":", 10, 330, Color.Red);
-                Text.Otrisovka.Write(txta, 10, 350, Color.White);
+                Otrisovka.Write("Redact " + pathFile + ":", 10, 330, Color.Red);
+                Otrisovka.Write(txta, 10, 350, Color.White);
                 if (k.Key == ConsoleKeyy.Spacebar)
                 {
                     txta += " ";
                 }
-                else if (k.Key == ConsoleKeyy.Backspace && txta.Length >= 1)
+                else if (k.Key == ConsoleKeyy.Backspace)
                 {
-                    txta = txta.Remove(txta.Length - 1);
+                    if (txta.Length >= 1) { txta = txta.Remove(txta.Length - 1); }
                 }
                 else if (k.Key == ConsoleKeyy.Escape)
                 {

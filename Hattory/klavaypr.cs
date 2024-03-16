@@ -10,7 +10,7 @@ using aik = Hattory.Kernel;
 using System.IO;
 #pragma warning disable CA1416 // Проверка совместимости платформы
 
-namespace kalavaypravlenie
+namespace Hattory
 {
     internal class klavaypr
     {

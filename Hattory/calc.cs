@@ -5,7 +5,7 @@ using sus = Cosmos.System;
 using System.Windows.Input;
 using kern = Hattory.Kernel;
 
-namespace Calculator
+namespace Hattory
 {
     public class Calc
     {
@@ -24,43 +24,43 @@ namespace Calculator
             try
             {
                 canvas.DrawFilledRectangle(Color.DarkGray, 25, 60, 225, 325);
-                Text.Otrisovka.Write("Calculator", 100, 65, Color.Black);
+                Otrisovka.Write("Calculator", 100, 65, Color.Black);
                 //cifri buttons - 1
                 canvas.DrawFilledRectangle(Color.Gray, 30, 170, 40, 40);
                 canvas.DrawFilledRectangle(Color.Gray, 80, 170, 40, 40);
                 canvas.DrawFilledRectangle(Color.Gray, 130, 170, 40, 40);
                 canvas.DrawFilledRectangle(Color.Gray, 180, 170, 40, 40);
-                Text.Otrisovka.Write("1", 50, 185, Color.Black);
-                Text.Otrisovka.Write("2", 100, 185, Color.Black);
-                Text.Otrisovka.Write("3", 150, 185, Color.Black);
-                Text.Otrisovka.Write("BS", 194, 185, Color.Black);
+                Otrisovka.Write("1", 50, 185, Color.Black);
+                Otrisovka.Write("2", 100, 185, Color.Black);
+                Otrisovka.Write("3", 150, 185, Color.Black);
+                Otrisovka.Write("BS", 194, 185, Color.Black);
                 //2
                 canvas.DrawFilledRectangle(Color.Gray, 30, 220, 40, 40);
                 canvas.DrawFilledRectangle(Color.Gray, 80, 220, 40, 40);
                 canvas.DrawFilledRectangle(Color.Gray, 130, 220, 40, 40);
                 canvas.DrawFilledRectangle(Color.Gray, 180, 220, 40, 40);
-                Text.Otrisovka.Write("4", 50, 235, Color.Black);
-                Text.Otrisovka.Write("5", 100, 235, Color.Black);
-                Text.Otrisovka.Write("6", 150, 235, Color.Black);
-                Text.Otrisovka.Write("sqrt", 184, 235, Color.Black);
+                Otrisovka.Write("4", 50, 235, Color.Black);
+                Otrisovka.Write("5", 100, 235, Color.Black);
+                Otrisovka.Write("6", 150, 235, Color.Black);
+                Otrisovka.Write("sqrt", 184, 235, Color.Black);
                 //3
                 canvas.DrawFilledRectangle(Color.Gray, 30, 270, 40, 40);
                 canvas.DrawFilledRectangle(Color.Gray, 80, 270, 40, 40);
                 canvas.DrawFilledRectangle(Color.Gray, 130, 270, 40, 40);
                 canvas.DrawFilledRectangle(Color.Gray, 180, 270, 40, 40);
-                Text.Otrisovka.Write("7", 50, 285, Color.Black);
-                Text.Otrisovka.Write("8", 100, 285, Color.Black);
-                Text.Otrisovka.Write("9", 150, 285, Color.Black);
-                Text.Otrisovka.Write("sqr", 188, 285, Color.Black);
+                Otrisovka.Write("7", 50, 285, Color.Black);
+                Otrisovka.Write("8", 100, 285, Color.Black);
+                Otrisovka.Write("9", 150, 285, Color.Black);
+                Otrisovka.Write("sqr", 188, 285, Color.Black);
                 //0
                 canvas.DrawFilledRectangle(Color.Gray, 30, 320, 40, 40);
-                Text.Otrisovka.Write("-", 50, 335, Color.Black);
+                Otrisovka.Write("-", 50, 335, Color.Black);
                 canvas.DrawFilledRectangle(Color.Gray, 80, 320, 40, 40);
-                Text.Otrisovka.Write("0", 100, 335, Color.Black);
+                Otrisovka.Write("0", 100, 335, Color.Black);
                 canvas.DrawFilledRectangle(Color.Gray, 130, 320, 40, 40);
-                Text.Otrisovka.Write(".", 150, 335, Color.Black);
+                Otrisovka.Write(".", 150, 335, Color.Black);
                 canvas.DrawFilledRectangle(Color.Gray, 180, 320, 40, 40);
-                Text.Otrisovka.Write("x^y", 188, 335, Color.Black);
+                Otrisovka.Write("x^y", 188, 335, Color.Black);
                 //end
                 //button press
                 //1
@@ -318,17 +318,17 @@ namespace Calculator
                     canvas.DrawFilledRectangle(Color.Green, 30, 115, 190, 15);
                 }
                 canvas.DrawFilledRectangle(Color.White, 30, 145, 190, 15);
-                Text.Otrisovka.Write(first, 35, 80, Color.Black);
-                Text.Otrisovka.Write(second, 35, 115, Color.Black);
+                Otrisovka.Write(first, 35, 80, Color.Black);
+                Otrisovka.Write(second, 35, 115, Color.Black);
                 try
                 {
-                    Text.Otrisovka.Write(c.ToString(), 30, 145, Color.Black);
+                    Otrisovka.Write(c.ToString(), 30, 145, Color.Black);
                 }
                 catch (Exception) { }
-                Text.Otrisovka.Write("Plus", 30, 100, Color.Black); // 32
-                Text.Otrisovka.Write("Minus", 70, 100, Color.Black); // 40 + 5
-                Text.Otrisovka.Write("Devide", 120, 100, Color.Black); // 48 + 5
-                Text.Otrisovka.Write("Multiply", 175, 100, Color.Black); //64 + 5
+                Otrisovka.Write("Plus", 30, 100, Color.Black); // 32
+                Otrisovka.Write("Minus", 70, 100, Color.Black); // 40 + 5
+                Otrisovka.Write("Devide", 120, 100, Color.Black); // 48 + 5
+                Otrisovka.Write("Multiply", 175, 100, Color.Black); //64 + 5
                 try { 
                     firstI = Convert.ToSingle(first);
                     secondI = Convert.ToSingle(second);
@@ -368,7 +368,7 @@ namespace Calculator
                 Cosmos.Core.Memory.Heap.Collect();
             }
             catch (Exception) {
-                Text.Otrisovka.Write("ERROR 1000-7", 30, 145, Color.Black);
+                Otrisovka.Write("ERROR 1000-7", 30, 145, Color.Black);
             }
         }
     }

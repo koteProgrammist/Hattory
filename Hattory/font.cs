@@ -2,7 +2,7 @@
 using Cosmos;
 using scr = Hattory.Kernel;
 
-namespace Text
+namespace Hattory
 {
     public class Font8x8
     {
