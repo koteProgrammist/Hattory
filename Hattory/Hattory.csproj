@@ -23,6 +23,7 @@
         <DebugEnabled>False</DebugEnabled>
         <VMWareEdition>Workstation</VMWareEdition>
         <SignAssembly>False</SignAssembly>
+        <UseUEFI>True</UseUEFI>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
