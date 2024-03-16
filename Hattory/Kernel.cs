@@ -15,6 +15,7 @@ using Cosmos.HAL;
 using Cosmos.System.Audio;
 using Cosmos.HAL.Drivers.Audio;
 using Cosmos.System.Audio.IO;
+using System.Diagnostics;
 
 #pragma warning disable CA1416 // бля меня этот ебучий варнинг заебал
 
@@ -31,30 +32,34 @@ namespace Hattory
 
         //====BOOLEANS====
 
-        public static bool ispysk; //knopka pysk
-        public static bool ispcinfo; //pc information
-        public static bool iscolors; //color changer
-        public static bool iscalc; //calculator
-        public static bool istaskm; //hardware monitor (old task manager)
-        public static bool isdiskman; //disk manager
-        public static bool oboi; //show the wallpaper or not?
+        public static bool ispysk = false; //knopka pysk
+        public static bool ispcinfo = false; //pc information
+        public static bool iscolors = false; //color changer
+        public static bool iscalc = false; //calculator
+        public static bool istaskm = false; //hardware monitor (old task manager)
+        public static bool isdiskman = false; //disk manager
+        public static bool oboi = true; //show the wallpaper or not?
         public static bool isalwaysshowfps; //always true
         public static bool FVGAIU = false; //FUCKING VIDEO GRAPHICS ARRAY INTERFACE and something on U.
-        public static bool isfilemanager; // file manager
+        public static bool isfilemanager = false; // file manager
         public static bool iscalcready = false; //idk lol, something for normal calculator work. I wrote this in 2021
         public static bool isformatsure = false; //Are you want to delete file?
         public static bool isfilerename = false; //Are you want to rename file?
         public static bool issettingmenu = false; // menu with PC management tools
         public static bool shutdown; // Do you want to shutdown the computer?
+        public static bool isguessit = false;
 
         //====OTHER====
 
-        public static int memsec; // variable for time in system
+        public static int memsec = 61; // variable for time in system
         public static string first; //for calculator
         public static string second; //for calculator
         public static float firstI; //for calculator
         public static float secondI; //for calculator
         public static float c; //for calculator
+        public static string status = ""; //quo? for guess it yet
+        public static string enterrednum = ""; //for guess it
+        public static int randomnum; //for guess it
         public static int globaldskcnt = 0; //current disk number
         public static Color colora; //system background color
         public static sus.FileSystem.CosmosVFS fs = new CosmosVFS(); //FS
@@ -112,15 +117,6 @@ namespace Hattory
                 //canvas.DrawImage(BIMG, 0, 0);
                 //canvas.Display();
                 //Console.Beep(2000, 1000);
-                memsec = 61;
-                oboi = true;
-                isdiskman = false;
-                ispysk = false;
-                ispcinfo = false;
-                iscolors = false;
-                iscalc = false;
-                isfilemanager = false;
-                istaskm = false;
                 try
                 {
                     VFSManager.RegisterVFS(fs);
@@ -383,6 +379,14 @@ namespace Hattory
                             isdiskman = false;
                         }
                     }
+                    //setting menu
+                    if (ClickRight(100, 100, 200, 150))
+                    {
+                        if (issettingmenu == true)
+                        {
+                            issettingmenu = false;
+                        }
+                    }
 
                     // ------------------------------------------\
                     // CLICKS CLICKS CLICKS CLICKS CLICKS CLICKS |
@@ -405,6 +409,7 @@ namespace Hattory
                                 iscalc = false; //calculator
                                 isdiskman = false; //disk manager
                                 isfilerename = false; //Are you want to rename file?
+                                isguessit = false;
                                 if (isformatsure)
                                 {
                                     Notepad.ntepad.islock = false;
@@ -437,6 +442,7 @@ namespace Hattory
                                 iscalc = false; //calculator
                                 isdiskman = false; //disk manager
                                 isfilerename = false; //Are you want to rename file?
+                                isguessit = false;
                                 if (isformatsure)
                                 {
                                     Notepad.ntepad.islock = false;
@@ -474,6 +480,43 @@ namespace Hattory
                                 iscalc = true; //calculator
                                 isdiskman = false; //disk manager
                                 isfilerename = false; //Are you want to rename file?
+                                isguessit = false;
+                                if (isformatsure)
+                                {
+                                    Notepad.ntepad.islock = false;
+                                    isformatsure = false; //Are you want to delete file?
+                                }
+                                else if (isfilerename)
+                                {
+                                    Notepad.ntepad.islock = false;
+                                    Notepad.ntepad.filename = "";
+                                    klavaypr.On = true;
+                                    isfilerename = false;
+                                }
+                            }
+                        }
+                    }
+                    //====Guess It!
+                    if (Click(665, 98, 72, 15))
+                    {
+                        if (ispysk)
+                        {
+                            if (!issettingmenu)
+                            {
+                                isfilemanager = false;
+                                shutdown = false;
+                                iscalcready = false;
+                                issettingmenu = false;
+                                ispysk = false; //knopka pysk
+                                ispcinfo = false; //pc information
+                                iscolors = false; //color changer
+                                iscalc = false; //calculator
+                                isdiskman = false; //disk manager
+                                isfilerename = false; //Are you want to rename file?
+                                isguessit = true;
+                                randomnum = new Random().Next(0, 101);
+                                status = "New number has made";
+                                enterrednum = "";
                                 if (isformatsure)
                                 {
                                     Notepad.ntepad.islock = false;
@@ -514,6 +557,7 @@ namespace Hattory
                                 iscalc = false; //calculator
                                 isdiskman = false; //disk manager
                                 isfilerename = false; //Are you want to rename file?
+                                isguessit = false;
                                 if (isformatsure)
                                 {
                                     isformatsure = false; //Are you want to delete file?
@@ -606,7 +650,6 @@ namespace Hattory
                         Text.Otrisovka.Write("Hardware Monitor", 110, 150, Color.Black);
                         Text.Otrisovka.Write("PC Information", 110, 130, Color.Black);
                         Text.Otrisovka.Write("Colors", 110, 110, Color.Black);
-                        Text.Otrisovka.Write("Close", 110, 215, Color.Black);
                         //colors
                         if (Click(110, 110, 48, 16))
                         {
@@ -657,11 +700,6 @@ namespace Hattory
                                 isdiskman = true;
                                 issettingmenu = false;
                             }
-                        }
-                        //Close
-                        if (Click(110, 215, 40, 16))
-                        {
-                            issettingmenu = false;
                         }
                     }
                     //====FILE MANAGER
@@ -720,6 +758,7 @@ namespace Hattory
                         Text.Otrisovka.Write("Settigs Menu", 665, 52, Color.White);
                         Text.Otrisovka.Write("File Inspector", 665, 68, Color.White);
                         Text.Otrisovka.Write("Calculator", 665, 84, Color.White);
+                        Text.Otrisovka.Write("Guess It!", 665, 100, Color.White);
                         canvas.DrawFilledRectangle(Color.Crimson, 665, 150, 30, 30);
                         canvas.DrawFilledRectangle(Color.OrangeRed, 705, 150, 30, 30);
                         //------------------------------
@@ -776,6 +815,74 @@ namespace Hattory
                             }
                         }
                         catch (Exception) { }
+                    }
+                    //Guess It!
+                    if (isguessit == true)
+                    {
+                        //Code generated by HattoryWindowCreator
+                        canvas.DrawFilledRectangle(Color.DarkGray, 150, 100, 375, 200); //window background
+                        canvas.DrawFilledRectangle(Color.Gray, 415, 150, 100, 75); //button
+                        canvas.DrawFilledRectangle(Color.Gray, 153, 201, 200, 15);
+                        Text.Otrisovka.Write("New Number", 427, 184, Color.Black); //CWR=48
+                        Text.Otrisovka.Write("I made random number from 0 to 100, Guess It!", 155, 105, Color.Black); //CWR=360
+                        klavaypr.On = false;
+                        sus.KeyEvent k;
+                        bool IsKeyPressed = sus.KeyboardManager.TryReadKey(out k);
+                        Text.Otrisovka.Write(enterrednum, 155, 200, Color.Black);
+                        Text.Otrisovka.Write(status, 155, 280, Color.Black);
+                        if (k.Key == ConsoleKeyy.Spacebar)
+                        {
+                            enterrednum += " ";
+                        }
+                        else if (k.Key == ConsoleKeyy.Backspace)
+                        {
+                            if (enterrednum.Length >= 1)
+                            {
+                                enterrednum = enterrednum.Remove(enterrednum.Length - 1);
+                            }
+                        }
+                        else if (k.Key == ConsoleKeyy.Escape)
+                        {
+                            klavaypr.On = true;
+                            isguessit = false;
+                        }
+                        else if (k.Key == ConsoleKeyy.Enter)
+                        {
+                            try
+                            {
+                                int num = Convert.ToInt32(enterrednum);
+                                if (num > randomnum) {
+                                    status = "Guessed number less than " + num.ToString();
+                                }
+                                else if (num < randomnum)
+                                {
+                                    status = "Guessed number greater than " + num.ToString();
+                                }
+                                else if (num == randomnum) {
+                                    status = "You guess it! Congratulations!";
+                                }
+                            }
+                            catch (Exception) { }
+                        }
+                        else
+                        {
+                            if (k.KeyChar != 'ｔ')
+                            {
+                                enterrednum += k.KeyChar;
+                            }
+                        }
+                        if (Click(415, 150, 100, 75))
+                        {
+                            randomnum = new System.Random().Next(0, 101);
+                            status = "New number has made";
+                            enterrednum = "";
+                        }
+
+                        if (ClickRight(150, 100, 375, 200))
+                        {
+                            isguessit = false;
+                        }
+
                     }
                     //======SureDelete
                     if (isformatsure == true)

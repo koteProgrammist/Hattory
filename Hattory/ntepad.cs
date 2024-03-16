@@ -140,7 +140,7 @@ namespace Notepad
                 {
                     txta += " ";
                 }
-                else if (k.Key == ConsoleKeyy.Backspace)
+                else if (k.Key == ConsoleKeyy.Backspace && txta.Length >= 1)
                 {
                     txta = txta.Remove(txta.Length - 1);
                 }
