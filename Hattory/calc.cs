@@ -1,8 +1,6 @@
 ﻿using Cosmos.System.Graphics;
 using System;
 using System.Drawing;
-using sus = Cosmos.System;
-using System.Windows.Input;
 using kern = Hattory.Kernel;
 
 namespace Hattory
@@ -120,7 +118,7 @@ namespace Hattory
                 //4
                 if (kern.Click(30, 220, 40, 40))
                 {
-                    if(iscalcready == false)
+                    if (iscalcready == false)
                     {
                         if (first.Length < 22)
                         {
@@ -275,7 +273,7 @@ namespace Hattory
                         {
                             second = second.Remove(second.Length - 1, 1);
                         }
-                        
+
                     }
                 }
                 //.
@@ -329,7 +327,8 @@ namespace Hattory
                 Otrisovka.Write("Minus", 70, 100, Color.Black); // 40 + 5
                 Otrisovka.Write("Devide", 120, 100, Color.Black); // 48 + 5
                 Otrisovka.Write("Multiply", 175, 100, Color.Black); //64 + 5
-                try { 
+                try
+                {
                     firstI = Convert.ToSingle(first);
                     secondI = Convert.ToSingle(second);
                 }
@@ -353,12 +352,12 @@ namespace Hattory
                 //SQRT()
                 if (kern.Click(180, 220, 40, 40))
                 {
-                    c = (float)Math.Sqrt(firstI);
+                    c = !iscalcready ? (float)Math.Sqrt(firstI) : (float)Math.Sqrt(secondI);
                 }
                 //SQR()
                 if (kern.Click(180, 270, 40, 40))
                 {
-                    c = firstI * firstI;
+                    c = !iscalcready ? (float)Math.Pow(firstI,2) : (float)Math.Pow(secondI,2);
                 }
                 //pow()
                 if (kern.Click(180, 320, 40, 40))
@@ -367,7 +366,8 @@ namespace Hattory
                 }
                 Cosmos.Core.Memory.Heap.Collect();
             }
-            catch (Exception) {
+            catch (Exception)
+            {
                 Otrisovka.Write("ERROR 1000-7", 30, 145, Color.Black);
             }
         }

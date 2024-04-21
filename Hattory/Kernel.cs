@@ -1,20 +1,16 @@
-﻿using Cosmos.System.Graphics;
-using System;
-using System.IO;
-using System.Drawing;
-using sus = Cosmos.System;
-using ConsoleKeyy = Cosmos.System.ConsoleKeyEx;
-using Cosmos.Core;
-using IL2CPU.API.Attribs;
-using Cosmos.System.FileSystem;
-using Cosmos.System.FileSystem.VFS;
-using Cosmos.HAL.Drivers.Video;
+﻿using Cosmos.Core;
 using Cosmos.Core.Multiboot;
 using Cosmos.HAL;
-using Cosmos.System.Audio;
-using Cosmos.HAL.Drivers.Audio;
-using Cosmos.System.Audio.IO;
-using System.Diagnostics;
+using Cosmos.HAL.Drivers.Video;
+using Cosmos.System.FileSystem;
+using Cosmos.System.FileSystem.VFS;
+using Cosmos.System.Graphics;
+using IL2CPU.API.Attribs;
+using System;
+using System.Drawing;
+using System.IO;
+using ConsoleKeyy = Cosmos.System.ConsoleKeyEx;
+using sus = Cosmos.System;
 
 #pragma warning disable CA1416 // бля меня этот ебучий варнинг заебал
 
@@ -126,8 +122,7 @@ namespace Hattory
                     if (VBEDriver.ISAModeAvailable()) { return true; }
                     if (PCI.Exists(VendorID.VirtualBox, DeviceID.VBVGA)) { return true; }
                     if (PCI.Exists(VendorID.Bochs, DeviceID.BGA)) { return true; }
-                    if (Multiboot2.IsVBEAvailable) { return true; }
-                    return false;
+                    return Multiboot2.IsVBEAvailable;
                 }
                 colora = Color.Black;
                 if (PCI.GetDevice(VendorID.VMWare, DeviceID.SVGAIIAdapter) != null && PCI.Exists(PCI.GetDevice(VendorID.VMWare, DeviceID.SVGAIIAdapter)))
@@ -154,8 +149,8 @@ namespace Hattory
                     sus.MouseManager.ScreenHeight = 200;
                     FVGAIU = true;
                 }
-                sus.MouseManager.X = sus.MouseManager.ScreenWidth/2;
-                sus.MouseManager.Y = sus.MouseManager.ScreenHeight/2;
+                sus.MouseManager.X = sus.MouseManager.ScreenWidth / 2;
+                sus.MouseManager.Y = sus.MouseManager.ScreenHeight / 2;
                 FpsShower.ShouldRender = true;
                 //Console.Beep(3000, 1000);
             }
@@ -362,7 +357,7 @@ namespace Hattory
                         }
                     }
                     //FileManager
-                    if (ClickRight(10, 60, 270 + Notepad.path.Length * 2, 250))
+                    if (ClickRight(10, 60, 270 + (Notepad.path.Length * 2), 250))
                     {
                         if (isfilemanager == true && isformatsure == false)
                         {
@@ -518,6 +513,7 @@ namespace Hattory
                                 isdiskman = false; //disk manager
                                 isfilerename = false; //Are you want to rename file?
                                 isguessit = true;
+                                klavaypr.On = false;
                                 randomnum = new Random().Next(0, 101);
                                 status = "New number has made";
                                 enterrednum = "";
@@ -854,15 +850,18 @@ namespace Hattory
                             try
                             {
                                 int num = Convert.ToInt32(enterrednum);
-                                if (num > randomnum) {
+                                if (num > randomnum)
+                                {
                                     status = "Guessed number less than " + num.ToString();
                                 }
                                 else if (num < randomnum)
                                 {
                                     status = "Guessed number greater than " + num.ToString();
                                 }
-                                else if (num == randomnum) {
+                                else if (num == randomnum)
+                                {
                                     status = "You guess it! Congratulations!";
+                                    randomnum = new System.Random().Next(0, 101);
                                 }
                             }
                             catch (Exception) { }
@@ -880,7 +879,7 @@ namespace Hattory
                             status = "New number has made";
                             enterrednum = "";
                         }
-                    } 
+                    }
                     //======SureDelete
                     if (isformatsure == true)
                     {

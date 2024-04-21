@@ -1,15 +1,9 @@
-﻿using System;
-using System.IO;
-using Cosmos.System.Graphics;
+﻿using Cosmos.System.Graphics;
+using System;
 using System.Drawing;
+using System.IO;
 using ConsoleKeyy = Cosmos.System.ConsoleKeyEx;
 using sus = Cosmos.System;
-using Cosmos.HAL.BlockDevice;
-using System.Linq;
-using System.Text.RegularExpressions;
-using Cosmos.System.Graphics.Fonts;
-using static System.Net.Mime.MediaTypeNames;
-using System.Runtime.CompilerServices;
 #pragma warning disable CA1416 // Проверка совместимости платформы
 
 namespace Hattory
@@ -32,8 +26,8 @@ namespace Hattory
 
         public static void enternote()
         {
-            canvas.DrawFilledRectangle(Color.Wheat, 10, 60, 270 + path.Length*2, 250);
-            Otrisovka.Write("File Manager: " + path,30,70,Color.Black);
+            canvas.DrawFilledRectangle(Color.Wheat, 10, 60, 270 + (path.Length * 2), 250);
+            Otrisovka.Write("File Manager: " + path, 30, 70, Color.Black);
             try
             {
                 var files_list = Directory.GetFiles(path);
@@ -105,7 +99,7 @@ namespace Hattory
                     iznai += 16;
                 }
                 //RENAME
-                if (Hattory.Kernel.ClickMiddle(150, 90, 270 + path.Length * 2, 220) && islock == false)
+                if (Hattory.Kernel.ClickMiddle(150, 90, 270 + (path.Length * 2), 220) && islock == false)
                 {
                     islock = true;
                     klavaypr.On = false;

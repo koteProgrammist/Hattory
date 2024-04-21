@@ -1,13 +1,5 @@
-﻿using System;
-using Cosmos.System.Graphics;
-using System.Drawing;
-using ConsoleKeyy = Cosmos.System.ConsoleKeyEx;
+﻿using ConsoleKeyy = Cosmos.System.ConsoleKeyEx;
 using sus = Cosmos.System;
-using Cosmos.HAL.BlockDevice;
-using System.Linq;
-using System.Text.RegularExpressions;
-using aik = Hattory.Kernel;
-using System.IO;
 #pragma warning disable CA1416 // Проверка совместимости платформы
 
 namespace Hattory
