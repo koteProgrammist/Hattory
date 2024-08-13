@@ -983,8 +983,9 @@ namespace Hattory
             catch (Exception e)
             {
                 sus.PCSpeaker.Beep();
-                canvas.Disable();
-                System.Console.WriteLine(e.ToString());
+                //Only for debug
+                //canvas.Disable();
+                //System.Console.WriteLine(e.ToString());
             }
         }
     }
