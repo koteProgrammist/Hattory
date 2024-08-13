@@ -2,7 +2,7 @@
 using System;
 using System.Drawing;
 using kern = Hattory.Kernel;
-
+//calc
 namespace Hattory
 {
     public class Calc
