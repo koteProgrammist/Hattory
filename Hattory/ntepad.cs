@@ -66,8 +66,14 @@ namespace Hattory
                             {
                                 txta = File.ReadAllText(path + @"\" + pathhh);
                                 @fileeepath = pathhh;
-                                klavaypr.On = false;
                                 isended = false;
+                            }
+                            if (pathhh.EndsWith(".cfi") || pathhh.EndsWith(".Cfi") || pathhh.EndsWith(".cFi") || pathhh.EndsWith(".cfI") || pathhh.EndsWith(".CFi") || pathhh.EndsWith(".cFI") || pathhh.EndsWith(".CfI") || pathhh.EndsWith(".CFI"))
+                            {
+                                txta = File.ReadAllText(path + @"\" + pathhh);
+                                Colorfull.Loadd(txta);
+                                Kernel.isColorfull = true;
+                                Kernel.isfilemanager = false;
                             }
                             if (pathhh.EndsWith(".bmp") || pathhh.EndsWith(".Bmp") || pathhh.EndsWith(".bMp") || pathhh.EndsWith(".bmP") || pathhh.EndsWith(".BMp") || pathhh.EndsWith(".bMP") || pathhh.EndsWith(".BmP") || pathhh.EndsWith(".BMP"))
                             {
@@ -108,6 +114,7 @@ namespace Hattory
                 if (isended == false)
                 {
                     entname(fileeepath);
+                    klavaypr.On = false;
                 }
                 if (isendedbmp == false)
                 {
@@ -129,6 +136,7 @@ namespace Hattory
                 bool IsKeyPressed = sus.KeyboardManager.TryReadKey(out k);
                 Otrisovka.Write("Redact " + pathFile + ":", 10, 330, Color.Red);
                 Otrisovka.Write(txta, 10, 350, Color.White);
+                klavaypr.YPRklava(k);
                 if (k.Key == ConsoleKeyy.Spacebar)
                 {
                     txta += " ";
@@ -139,8 +147,8 @@ namespace Hattory
                 }
                 else if (k.Key == ConsoleKeyy.Escape)
                 {
-                    txta = "";
                     klavaypr.On = true;
+                    txta = "";
                     isended = true;
                 }
                 else if (k.Key == ConsoleKeyy.Enter)
@@ -159,7 +167,7 @@ namespace Hattory
                 }
                 else
                 {
-                    if (k.KeyChar != 'ｔ')
+                    if (char.IsAscii(k.KeyChar) && k.KeyChar != ' ')
                     {
                         txta += k.KeyChar;
                     }

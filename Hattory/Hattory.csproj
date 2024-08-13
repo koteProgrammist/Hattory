@@ -19,11 +19,13 @@
         <PxeInterface>192.168.0.8</PxeInterface>
         <CompressionType>Gzip</CompressionType>
         <CompileVBEMultiboot>True</CompileVBEMultiboot>
-        <VBEResolution>800x600x32</VBEResolution>
+        <VBEResolution>1024x768x32</VBEResolution>
         <DebugEnabled>False</DebugEnabled>
         <VMWareEdition>Workstation</VMWareEdition>
         <SignAssembly>False</SignAssembly>
         <UseUEFI>True</UseUEFI>
+        <RemoveBootDebugOutput>True</RemoveBootDebugOutput>
+        <StackCorruptionDetectionEnabled>False</StackCorruptionDetectionEnabled>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

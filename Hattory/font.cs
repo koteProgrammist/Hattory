@@ -942,7 +942,7 @@ namespace Hattory
     }
     public static class Otrisovka
     {
-        public static void DrawChar(int x, int y, byte[] Data, int Color)
+        public static void DrawChar(int x, int y, byte[] Data, System.Drawing.Color Color)
         {
             int c = 0;
             for (int p = y; p < y + 9; p++)
@@ -951,14 +951,14 @@ namespace Hattory
                 {
                     if (Data[c] == 1)
                     {
-                        scr.SetPixel(i, p, Color);
+                        scr.canvas.DrawPoint(Color, i, p);
                     }
 
                     c = c + 1;
                 }
             }
         }
-        public static void Write(String Text, int Textx, int Texty, System.Drawing.Color colora, int Color = 255, bool NTDF = false)
+        public static void Write(String Text, int Textx, int Texty, System.Drawing.Color Color, bool NTDF = false)
         {
             int iznx = Textx;
             //FOR VGA WRITER
@@ -1414,7 +1414,7 @@ namespace Hattory
             }
             else
             {
-                Hattory.Kernel.canvas.DrawString(Text, Cosmos.System.Graphics.Fonts.PCScreenFont.Default, colora, Textx, Texty);
+                scr.canvas.DrawString(Text, Cosmos.System.Graphics.Fonts.PCScreenFont.Default, Color, Textx, Texty);
             }
         }
     }        
