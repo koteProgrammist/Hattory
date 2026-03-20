@@ -1,4 +1,10 @@
 # Hattory
+<div align="center">
+<img src="https://img.shields.io/github/languages/code-size/Shlepsss/BurgerShell" />
+<img src="https://img.shields.io/github/downloads/Shlepsss/BurgerShell/total" />
+<img src="https://img.shields.io/github/v/release/Shlepsss/BurgerShell" />
+<img src="https://img.shields.io/github/license/Shlepsss/BurgerShell" />
+</div>
 Simple OS that created by COSMOS that have calculator, PC information, GUI with mouse, PRAGMA programming language, Paint, Guess number game and clock. System is always in work.
 
 [For information about PRAGMA language](PRAGMA.md)
